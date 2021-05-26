@@ -46,30 +46,19 @@
                     py-3">Vote</button>
                 </div>
             </div>
-            <div class="flex px-2 py-6">
-                <a href="#" class="flex-none">
-                    <img src="https://source.unsplash.com/200x200/?face&corp=face&v=1" alt="avatar"
-                    class="w-14 h-14 rounded-xl">
-                </a>
-                <div class="mx-4">
+            <div class="flex flex-1 px-2 py-6">
+                <div class="flex-none">
+                    <a href="#" class="flex-none">
+                        <img src="https://source.unsplash.com/200x200/?face&corp=face&v=1" alt="avatar"
+                        class="w-14 h-14 rounded-xl">
+                    </a>
+                </div>
+                <div class=" w-full mx-4">
                     <h4 class="text-xl font-semibold">
                         <a href="#" class="hover:underline">A random title can go here</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Nesciunt, atque ex enim hic aliquam quas aliquid, asperiores
-                        molestias tempora soluta numquam libero odit quaerat aspernatur
-                        blanditiis error. Labore molestiae dolor iste eligendi
-                        suscipit debitis. Aspernatur id excepturi explicabo!
-                        Sapiente explicabo nesciunt repudiandae, repellat debitis
-                        modi quibusdam quia! Sapiente placeat natus exercitationem
-                        reiciendis modi, aliquam rerum ad, rem minima praesentium
-                        perspiciatis assumenda ipsam, laudantium corporis!
-                        Assumenda a mollitia quas inventore ipsam nemo doloremque
-                        consequuntur temporibus cumque consectetur nam magni,
-                        deleniti quasi quia dolores repudiandae beatae explicabo
-                        minima qui eveniet, porro adipisci. Sed iste laborum
-                        aliquid culpa debitis eius cum magnam ullam.
+                        Lorem ipsum dolor sit amet consectetur
                     </div>
 
                     <div class="flex items-center justify-between mt-6">
@@ -84,7 +73,7 @@
                             <div class="bg-gray-200 text-xxs font-bold
                             uppercase leading-none rounded-full text-center
                             w-28 h-7 py-2 px-4">Open</div>
-                            <button class="relative bg-gray-100 hover:bg-gray-200
+                            <button class="relative bg-gray-100 border hover:bg-gray-200
                             transition duration-150 ease-in rounded-full h-7
                             py-2 px-3">
                                 <svg class="h-6 w-6 text-gray-400" fill="none"
