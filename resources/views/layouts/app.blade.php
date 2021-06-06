@@ -17,11 +17,11 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans bg-gray-background text-gray-900 text-sm">
-        <header class="flex items-center justify-between px-8 py-4">
+        <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
             <a href="#">
                 <img src="{{ asset('img/logo.svg') }}" alt="lclogo">
             </a>
-            <div class="flex items-center">
+            <div class="flex items-center mt-2 md:mt-0">
                 @if (Route::has('login'))
                     <div class="px-6 py-4">
                         @auth
@@ -52,9 +52,9 @@
             </div>
         </header>
 
-        <main class="container mx-auto flex" style="max-width: 1000px">
-            <div class="w-70 mr-5">
-                <div class="bg-white border-2 border-blue rounded-xl mt-16"
+        <main class="container mx-auto flex flex-col md:flex-row" style="max-width: 1000px">
+            <div class="w-70 mx-auto md:mx-0 md:mr-5">
+                <div class="bg-white md:sticky md:top-8 border-2 border-blue rounded-xl mt-16"
                 style="
                     border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
                     border-image-slice: 1;
@@ -94,7 +94,7 @@
                         <div class="flex items-center justify-between space-x-10">
                             <button type="button"
                             class="flex items-center justify-center w-1/2 h-11
-                            h-11 text-xs bg-gray-200 font-semibold rounded-xl
+                            text-xs bg-gray-200 font-semibold rounded-xl
                             border border-gray-200 hover:border-gray-400
                             transition duration-150 ease-in px-6 py-3">
                                 <svg class="h-4 w-4 text-gray-600 transform
@@ -106,7 +106,7 @@
                             </button>
                             <button type="button"
                             class="flex items-center justify-center w-1/2 h-11
-                            h-11 text-xs text-white bg-blue font-semibold rounded-xl
+                            text-xs text-white bg-blue font-semibold rounded-xl
                             border border-blue hover:bg-blue-hover
                             transition duration-150 ease-in px-6 py-3">
                                 <span class="ml-1">Submit</span>
@@ -115,8 +115,8 @@
                     </form>
                 </div>
             </div>
-            <div class="w-175">
-                <nav class="flex items-center justify-between text-xs">
+            <div class="w-full px-2 md:px-0 md:w-175">
+                <nav class="hidden md:flex items-center justify-between text-xs">
                     <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
                         <li>
                             <a class="border-b-4 pb-3 border-blue" href="http://">All Ideas (87)</a>
