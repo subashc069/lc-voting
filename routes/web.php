@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::view('/ideas', 'show');
+Route::get('ideas', [IdeaController::class, 'index'])->name('idea.index');
+Route::get('ideas/{idea:slug}', [IdeaController::class, 'show'])->name('idea.show');
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';

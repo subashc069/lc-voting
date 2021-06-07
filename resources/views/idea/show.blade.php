@@ -15,46 +15,46 @@
             </div>
             <div class=" w-full mx-2 md:mx-4">
                 <h4 class="text-xl font-semibold">
-                    <a href="#" class="hover:underline">A random title can go here</a>
+                    <a href="#" class="hover:underline">{{ $idea->title }}</a>
                 </h4>
                 <div class="text-gray-600 mt-3 line-clamp-3">
-                    Lorem ipsum dolor sit amet consectetur
+                    {{ $idea->description }}
                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
                     <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
-                        <div class="hidden md:block font-bold text-gray-900">John Doe</div>
+                        <div class="hidden md:block font-bold text-gray-900">{{ $idea->user->name }}</div>
                         <div class="hidden md:block">&bull;</div>
-                        <div>10 Hours Ago</div>
+                        <div>{{ $idea->created_at->diffForHumans() }}</div>
                         <div>&bull;</div>
-                        <div>Category 1</div>
+                        <div>category 1</div>
                         <div>&bull;</div>
-                        <div class="text-gray-900">3 Comments</div>
+                        <div class="text-gray-900">3 comments</div>
                     </div>
                     <div
-                        x-data="{ isOpen:false }"  
+                        x-data="{ isopen:false }"  
                         class="flex items-center space-x-2 mt-4 md:mt-0"
                     >
                         <div class="bg-gray-200 text-xxs font-bold
                         uppercase leading-none rounded-full text-center
-                        w-28 h-7 py-2 px-4">Open</div>
+                        w-28 h-7 py-2 px-4">open</div>
                         <button 
-                            @click="isOpen = !isOpen"
+                            @click="isopen = !isopen"
                             class="relative bg-gray-100 border hover:bg-gray-200
                             transition duration-150 ease-in rounded-full h-7
                             py-2 px-3"
                         >
                             <svg class="h-6 w-6 text-gray-400" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
+                            viewbox="0 0 24 24" stroke="currentcolor">
                                 <path stroke-linecap="round"
                                 stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                stroke-width="2" d="m5 12h.01m12 12h.01m19 12h.01m6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                             </svg>
                             <ul 
                                 x-cloak
-                                x-show.transition.top.left="isOpen" 
-                                @click.away="isOpen = false"
-                                @keydown.escape.window="isOpen = false"
+                                x-show.transition.top.left="isopen" 
+                                @click.away="isopen = false"
+                                @keydown.escape.window="isopen = false"
                                 class="absolute w-44 text-left font-semibold
                                 bg-white shadow-dialog rounded-xl z-10 py-3 md:ml-8
                                 md:top-6 right-0 md:left-0"
@@ -62,12 +62,12 @@
                                 <li>
                                     <a href="#" class="hover:bg-gray-100
                                     block transition duration-150 ease-in
-                                    px-5 py-3">Mark As Spam</a>
+                                    px-5 py-3">mark as spam</a>
                                 </li>
                                 <li>
                                     <a href="#" class="hover:bg-gray-100
                                     block transition duration-150 ease-in
-                                    px-5 py-3">Delete Post</a>
+                                    px-5 py-3">delete post</a>
                                 </li>
                             </ul>
                         </button>
@@ -75,14 +75,14 @@
                     <div class="flex md:hidden mt-4 md:mt-0">
                         <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
                             <div class="text-sm font-bold leading-none">12</div>
-                            <div class="text-xxs font-semibold leading-none text-gray-400">Votes</div>
+                            <div class="text-xxs font-semibold leading-none text-gray-400">votes</div>
                         </div>
                         <button 
                             class="w-20 bg-gray-200 border border-gray-200
                             hover:border-gray-400 font-bold text-xxs uppercase
                             rounded-xl transition duration-150 ease-in px-4
                             py-3 -mx-5"
-                        >Vote
+                        >vote
                         </button>
                     </div>
 
