@@ -47,5 +47,13 @@ class Idea extends Model
         return $this->belongsTo(Category::class);
     }
     
-    
+    /**
+     * undocumented function
+     *
+     * @return void
+     */
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
 }

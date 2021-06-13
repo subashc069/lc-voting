@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Idea;
 use App\Models\Category;
-use GuzzleHttp\Promise\Create;
+use App\Models\Status;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -24,8 +24,17 @@ class ShowIdeasTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $ideaOne = Idea::factory()->create(['category_id' => $categoryOne->id]);
-        $ideaTwo = Idea::factory()->create(['category_id' => $categoryTwo->id]);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
+
+        $ideaOne = Idea::factory()->create([
+            'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
+        ]);
+        $ideaTwo = Idea::factory()->create([
+            'category_id' => $categoryTwo->id,
+            'status_id' => $statusConsidering->id,
+        ]);
 
         $response = $this->get(route('idea.index'));
 
@@ -33,9 +42,11 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($ideaOne->title);
         $response->assertSee($ideaOne->description);
         $response->assertSee($ideaOne->category->name);
+        $response->assertSee('Open</div>', false);
         $response->assertSee($ideaTwo->title);
         $response->assertSee($ideaTwo->description);
         $response->assertSee($ideaOne->category->name);
+        $response->assertSee('Considering</div>', false);
     }
 
     /**
@@ -45,14 +56,19 @@ class ShowIdeasTest extends TestCase
     public function single_idea_shows_correctly_in_show_idea_page()
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
-        $idea = Idea::factory()->create(['category_id' => $categoryOne->id]);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $idea = Idea::factory()->create([
+            'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
+        ]);
 
-        $response = $this->get(route('idea.show', $idea));
+        $response = $this->get(route('idea.show', ['idea' => $idea]));
 
         $response->assertSuccessful();
         $response->assertSee($idea->title);
         $response->assertSee($idea->description);
         $response->assertSee($idea->category->name);
+        $response->assertSee('Open</div>', false);
     }
 
     /**
@@ -62,7 +78,11 @@ class ShowIdeasTest extends TestCase
      public function ideas_pagination_works()
      {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
-        Idea::factory(Idea::PAGINATION_COUNT +1)->create(['category_id' => $categoryOne->id]);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        Idea::factory(Idea::PAGINATION_COUNT +1)->create([
+            'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
+        ]);
 
         $ideaOne = Idea::find(1);
         $ideaOne->title = 'My First Idea';
@@ -91,14 +111,17 @@ class ShowIdeasTest extends TestCase
     public function same_idea_titles_different_slugs()
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
         $ideaOne = Idea::factory()->create([
             'title' => 'My First Idea',
             'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
             'description' => 'Description For My First Idea',
         ]);
         $ideaTwo = Idea::factory()->create([
             'title' => 'My First Idea',
             'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
             'description' => 'Another Description For My First Idea',
         ]);
 

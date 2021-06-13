@@ -35,9 +35,10 @@
                         x-data="{ isopen:false }"  
                         class="flex items-center space-x-2 mt-4 md:mt-0"
                     >
-                        <div class="bg-gray-200 text-xxs font-bold
-                        uppercase leading-none rounded-full text-center
-                        w-28 h-7 py-2 px-4">open</div>
+                        <div class="{{ $idea->status->classes }} text-xxs font-bold
+                            uppercase leading-none rounded-full text-center
+                            w-28 h-7 py-2 px-4"
+                        >{{ $idea->status->name }}</div>
                         <button 
                             @click="isopen = !isopen"
                             class="relative bg-gray-100 border hover:bg-gray-200
